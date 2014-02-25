@@ -17,7 +17,7 @@ install.packages("ecoengine", dependencies = TRUE)
 install.packages("dplyr")
 ```
 
-Packages in development
+__Packages in development__
 
 ```coffee
 library(devtools)
@@ -30,6 +30,7 @@ install_github('ramnathv/rMaps')
 __To knit this presentation__
 
 ```coffee
+# Edit the index.Rhtml file if you need to
 Rscript -e "knit('index.Rhtml')"
 ```
 
