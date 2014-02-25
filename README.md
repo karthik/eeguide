@@ -3,6 +3,13 @@ _Feb 25, 2014_
 
 A quick demo of how to use the ecoengine R package.
 
+
+
+[![](slides.png)](http://karthik.github.io/eeguide/)
+
+
+
+
 __To install packages used in this demo__
 
 ```coffee
