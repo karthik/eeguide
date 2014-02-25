@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Guide to using the ecoengine R package</title>
+	<meta name="description" content="An introduction to R's role in facilitating open science">
+	<meta name="author" content="Karthik Ram">
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+	<!-- Core and extension CSS files -->
+	<script src="//use.edgefonts.net/anonymous-pro.js"></script> 
+    <script src="http://use.edgefonts.net/quattrocento-sans.js"></script>
+    <script src="http://use.edgefonts.net/gentium-book-basic.js"></script>
+    <script src="//use.edgefonts.net/kotta-one.js"></script>
+    <script type="text/javascript" src="//use.typekit.net/xsl8aec.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	<link rel="stylesheet" href="core/deck.core.css">
+	<link rel="stylesheet" href="extensions/goto/deck.goto.css">
+	<link rel="stylesheet" href="extensions/menu/deck.menu.css">
+	<link rel="stylesheet" href="extensions/navigation/deck.navigation.css">
+	<link rel="stylesheet" href="extensions/status/deck.status.css">
+	<link rel="stylesheet" href="extensions/hash/deck.hash.css">
+	<link rel="stylesheet" href="extensions/automatic/deck.automatic.css">
+	<link rel="stylesheet" href="themes/style/barug.css">
+	<link rel="stylesheet" href="themes/transition/fade.css">
+	<link rel="stylesheet" href="themes/style/knitr.css">
+	<script src="js/modernizr.custom.js"></script>
+
+</head>
+
+
+
+
+ <body class="deck-container">
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="ropensci"  data-duration="20000">
+	<div>
+	<br><br><br>
+	<hgroup>
+	<img src="images/ropensci.png">
+	<center><h3><span style="color:#34495E; font-size:70px">A guide to using the Ecoengine package</span><i class="ss-globe"></i></h3><br><br>
+	<h4> <span style="color:#79cef7;"><i class="ss-icon ss-social">twitter</i></span> <a href="https://twitter.com/_inundata">@_inundata</a> &nbsp;<br>
+	ropensci.github.io/eeguide	
+	</h4>
+	</center>
+	</hgroup>
+	</div>
+</section>
+
+
+<!--    ##############    slide delimiter  ##############    -->
+
+
+<section class="slide" id="installing_package">
+<br><br>
+<h2>Installing the package</h2>
+<!--begin.rcode installing,  eval = FALSE, message=FALSE, fig.align='center', cache = TRUE
+install.packages("ecoengine")
+# Requires version 3.0.1 or higher of R
+end.rcode-->
+</section>
+
+
+<section class="slide" id="ecoengine">
+<br><br>
+<h2>The ecoengine API</h2>
+<!--begin.rcode basic, message=FALSE, fig.align='center'
+library(ecoengine)
+ee_about()
+    end.rcode-->
+   <a href="http://ecoengine.berkeley.edu/">More on the documentation</a>
+</section>
+
+
+<section class="slide" id="ecoengine_sources">
+<br><br>
+<h2>Data sources in the API</h2>
+<!--begin.rcode ee_sources, message=FALSE, fig.align='center', cache = TRUE
+source_list <- ee_sources() 
+unique(source_list$name)
+end.rcode-->
+</section>
+
+
+<section class="slide" id="about_ee">
+<br><br>
+<h2>Retrieving observation data</h2>
+<!--begin.rcode ee_obs1, message=FALSE, fig.align='center', cache = TRUE
+results <- ee_observations(genus = "Lynx", progress = FALSE)
+results
+    end.rcode-->
+</section>
+
+
+
+<section class="slide" id="ee_obs">
+<br><br>
+<h2>Retrieving multiple pages of data</h2>
+<!--begin.rcode ee_obs, message=FALSE, fig.align='center', cache = TRUE
+results <- ee_observations(genus = "Lynx", page = 1:2,  progress = FALSE)
+results
+    end.rcode-->
+</section>
+
+
+
+<section class="slide" id="pinus">
+<br><br>
+<h2>Retrieving data for a particular species</h2>
+<!--begin.rcode pinus, message=FALSE, fig.align='center', cache = TRUE
+pinus_observations <- ee_observations(scientific_name = "Pinus", page = 1, quiet = TRUE, progress = FALSE)
+pinus_observations
+    end.rcode-->
+</section>
+
+
+
+<section class="slide" id="ecoengine4">
+<h2>More examples of searches</h2>	
+<br><br>
+<!--begin.rcode more_examples, eval=FALSE, message=FALSE, fig.align='center', cache = TRUE
+animalia <- ee_observations(kingdom = "Animalia")
+Artemisia <- ee_observations(scientific_name = "Artemisia douglasiana") 
+asteraceae <- ee_observationss(family = "asteraceae")
+vulpes <- ee_observations(genus = "vulpes")
+Anas <- ee_observations(scientific_name = "Anas cyanoptera", page = "all") 
+loons <- ee_observations(scientific_name = "Gavia immer", page = "all") 
+plantae <- ee_observations(kingdom = "plantae")
+# grab first 10 pages (250 results)
+plantae <- ee_observations(kingdom = "plantae", page = 1:10)
+chordata <- ee_observations(phylum = "chordata")
+# Class is clss since the former is a reserved keyword in SQL.
+aves <- ee_observations(clss = "aves")
+end.rcode-->
+</section>
+
+
+
+<section class="slide" id="ee_interactive_maps">
+<h2>Generate interactive maps with ecoengine</h2>	
+<br><br>
+<!--begin.rcode map, eval=FALSE, message=FALSE, fig.align='center', cache = TRUE
+lynx_data <- ee_observations(genus = "Lynx", georeferenced = TRUE, page = "all", quiet = TRUE)
+ee_map(lynx_data)
+end.rcode-->
+<a href="Ecoengine_species_map/Ecoengine_species_map.html"><img src="images/map.png"></a>
+</section>
+
+
+
+<section class="slide" id="sensors">
+<h2>Sensor data</h2>	
+<br><br>
+<!--begin.rcode sensor_data, eval=TRUE, message=FALSE, fig.align='center', cache = TRUE
+head(ee_list_sensors())
+end.rcode-->
+
+</section>
+
+
+<section class="slide" id="sensors_data">
+<h2>Sensor data</h2>	
+<br><br>
+<!--begin.rcode sensor_data2, eval=TRUE, message=FALSE, fig.align='center', cache = TRUE
+# First we can grab the list of sensor ids
+sensor_ids <- ee_list_sensors()$record
+# In this case we just need data for sensor with id 1625 
+angelo_hq <- sensor_ids[1]
+results <- ee_sensor_data(angelo_hq, page = 2, progress = FALSE)
+results
+end.rcode-->
+
+</section>
+<section class="slide" id="agg_sensor_data">
+<h2>Aggregated Sensor data</h2>	
+<br><br>
+<!--begin.rcode agg_sensor_data, eval=TRUE, message=FALSE, fig.align='center', cache = TRUE
+stations <- ee_list_sensors()
+sensor_df <- ee_sensor_agg(sensor_id = stations[1, c("record")], weeks = 2,
+    progress = FALSE)
+ head(sensor_df$data)
+end.rcode-->
+<!--begin.rcode agg_sensor_data_plot, eval=TRUE, echo = FALSE, message=FALSE, fig.align='center', cache = TRUE
+library(ggplot2)
+plt <- ggplot(sensor_df$data, aes(begin_date, mean)) + geom_line(size = 1, color = "steelblue") +
+geom_point() + theme_gray() + ylab("Solar radiation total kj/m^2") + xlab("Date") + ggtitle("Data from Angelo HQ")
+ggsave(plt, file = "plt.png", width = 6, height = 4)
+end.rcode-->
+<img src= "images/plt.png">
+
+</section>
+
+
+<section class="slide" id="ecoengine9">
+<h2>Downloading large amounts of data</h2>	
+<br><br>
+<!--begin.rcode large_data, eval=FALSE, message=FALSE, fig.align='center', cache = TRUE
+rodent_pages <- ee_pages(ee_observations(order = "Rodentia", progress = FALSE, quiet = TRUE))
+page_breaks <- split(1:rodent_pages, ceiling(seq_along(1:rodent_pages)/1000))
+rodent_data <- list()
+# This step will take a while, as it downloads ~50 mb of data with pauses to avoid hammering API
+for(i in 1:length(rodent_data)) {
+	rodent_data <- ee_observations(order = "Rodentia", page = page_breaks[[1]])
+	write.csv(rodent_data$data, file = paste0("rodent_data", i, ".csv"))
+}
+end.rcode-->
+<a href="https://gist.github.com/karthik/9197100">See full working example</a>
+</section>
+
+
+<section class="slide" id="ecoengine9b">
+<h2>Downloading a large amount of data (a more elegant way)</h2>	
+<br><br>
+<!--begin.rcode large_data2, eval=FALSE, message=FALSE, fig.align='center', cache = TRUE
+library(plyr)
+rodent_pages <- ee_pages(ee_observations(order = "Rodentia", progress = FALSE, quiet = TRUE))
+page_breaks <- split(1:rodent_pages, ceiling(seq_along(1:rodent_pages)/1000))
+results <- ldply(page_breaks, function(x) {
+		results <- ee_pages(ee_observations(order = "Rodentia", page = x, quiet = TRUE))
+		results$data
+}, .progress = "text")
+end.rcode-->
+</section>
+
+
+
+
+<section class="slide" id="ecoengine9a">
+<h2>Summarizing the results</h2>	
+<br><br>
+<!--begin.rcode summaries, eval=FALSE, message=FALSE, fig.align='center', cache = TRUE
+library(dplyr)
+rodents_summary <- rodents[!is.na(rodents$year), ] %.%
+
+ regroup(list(quote(abbreviation), quote(year))) %.%
+
+  summarise(n = n())
+names(rodents_summary) <- c("State", "Year", "Counts")
+head(rodents_summary)
+end.rcode-->
+<!--begin.rcode show_some_results, eval=TRUE, echo = FALSE, message=FALSE, fig.align='center', cache = TRUE
+rodents_summary <- read.csv("rodents_summary.csv")
+head(arrange(rodents_summary, Year))
+end.rcode-->
+</section>
+
+
+
+
+<section class="slide" id="chloropleths">
+<h2>Chloropleths</h2>	
+<!--begin.rcode other, eval = FALSE, message=FALSE, fig.align='center', cache = TRUE
+library(rMaps)
+rodents_summary <- dplyr::filter(rodents_summary, Year > 1899)
+ichoropleth(Counts ~ State, data = rodents_summary, animate = "Year", pal = "Reds", 
+	ncuts = 4, play = TRUE)
+end.rcode-->
+<a href="chloropleth_example.html"><img src = "images/chloropleth.png" target="_blank"></a>
+</section>
+
+
+
+<section class="slide" id="checklists">
+<h2>Checklist Data</h2>	
+<br><br>
+<!--begin.rcode last, eval=TRUE, message=FALSE, fig.align='center', cache = TRUE
+all_lists <- ee_checklists()
+nrow(all_lists)
+unique(all_lists$subject)
+end.rcode-->
+</section>
+
+
+<section class="slide" id="checklists_spiders">
+<h2>Looking through one subject in the checklist</h2>	
+<br><br>
+<!--begin.rcode spiders, eval=TRUE, message=FALSE, fig.align='center', cache = TRUE
+spiders <- ee_checklists(subject = "Spiders")
+spiders
+end.rcode-->
+</section>
+
+
+
+<section class="slide" id="checklists_spiders_download">
+<h2>Downloading complete checklist data</h2>	
+<br><br>
+<!--begin.rcode spider_download, eval=TRUE, message=FALSE, fig.align='center', cache = TRUE
+library(plyr)
+spider_details <- ldply(spiders$url, checklist_details) 
+names(spider_details)
+end.rcode-->
+</section>
+
+
+
+
+<section class="slide" id="photos">
+<h2>Search photos</h2>
+The engine has the full database of Cal photos	
+<br><br>
+<!--begin.rcode photos, eval=TRUE, message=FALSE, fig.align='center', cache = TRUE
+photos <- ee_photos(quiet = TRUE, progress = FALSE) 
+photos
+end.rcode-->
+</section>
+
+
+
+<section class="slide" id="photos_example">
+<h2>Browse photos</h2>	
+<br><br>
+<!--begin.rcode photo_viewer, eval=FALSE, message=FALSE, fig.align='center', cache = TRUE
+poppys <- ee_photos(scientific_name = "Eschscholzia californica", quiet = TRUE, progress = FALSE)
+view_photos(poppys)
+end.rcode-->
+<img src = "images/ecoengine_viewer.png">
+</section>
+
+
+<section class="slide" id="more_info">
+	<div>
+		<h2>Grab a PDF guide to the package</h2>
+<a href="https://github.com/ropensci/ecoengine/blob/master/inst/Using_ecoengine.pdf?raw=true"><img src="images/pdf_ecoengine.png"></a>
+</div>
+</section>
+
+
+<!--    ##############    closing slide  ##############    -->
+<section class="slide" id="outro">
+	<div>
+	<hgroup>
+	<h1>ropensci.org/ecoengine.html</h1>
+	<h2><a href="http://GitHub.com/ropensci"  style="color:#010101;"> ropensci on GitHub</a><br>
+	<a href="http://twitter.com/ropensci"  style="color:#79cef7;"> @ropensci on Twitter </a><br>
+	Questions or comments to: karthik dot ram at berkeley dot edu
+	<h2>To navigate this presentation, type <span style="color:#e64b65;font-style:bold; text-shadow: none"><b>M</a></span> to see all slides. <br><b><span style="color:#e64b65;font-style:bold; text-shadow: none"><b>G</a></span> to go to a specific slide</h2>
+
+</hgroup>
+</div>
+</section>
+
+<!-- ============================================================================= -->
+<!-- ====      END PRESENTATION  ==== -->
+<!-- Everything below can be ignored (just js libraries) -->
+<!-- ============================================================================= -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- deck.navigation snippet -->
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<!-- deck.status snippet -->
+<p class="deck-status">
+	<span class="deck-status-current"></span>
+	/
+	<span class="deck-status-total"></span>
+</p>
+
+<!-- deck.goto snippet -->
+<form action="." method="get" class="goto-form">
+	<label for="goto-slide">Go to slide:</label>
+	<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+	<datalist id="goto-datalist"></datalist>
+	<input type="submit" value="Go">
+</form>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+
+<!-- Grab CDN jQuery, with a protocol relative URL; fall back to local if offline -->
+<script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+<script>window.jQuery || document.write('<script src="jquery-1.7.min.js"><\/script>')</script>
+
+<!-- Deck Core and extensions -->
+<script src="core/deck.core.js"></script>
+<script src="extensions/hash/deck.hash.js"></script>
+<script src="extensions/menu/deck.menu.js"></script>
+<script src="extensions/goto/deck.goto.js"></script>
+<script src="extensions/status/deck.status.js"></script>
+<script src="extensions/navigation/deck.navigation.js"></script>
+<script src="extensions/blank/deck.blank.js"></script>
+
+<!-- Initialize the deck -->
+  <script>
+    $(function() {
+      $.extend(true, $.deck.defaults, {
+         automatic: {
+     			startRunning: true,
+     			cycle: false,
+     			slideDuration: 15000
+     		},
+     		classdata: {
+		      'bullet-point-timing': {
+		        duration: 100
+		      }
+		    }
+      });
+      $.deck('.slide');
+    })
+  </script>
+     <!-- Gauges Analytics -->
+<script type="text/javascript">
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '500ebcf4613f5d79c700001c');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+
+</body>
+</html>

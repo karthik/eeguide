@@ -1,0 +1,1592 @@
+<!doctype HTML>
+<meta charset = 'utf-8'>
+<html>
+  <head>
+    
+    <script src='js/d3.v3.min.js' type='text/javascript'></script>
+    <script src='js/topojson.v1.min.js' type='text/javascript'></script>
+    <script src='js/datamaps.all.min.js' type='text/javascript'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js' type='text/javascript'></script>
+    
+    <style>
+    .rChart {
+      display: block;
+      margin-left: auto; 
+      margin-right: auto;
+      width: 800px;
+      height: 400px;
+    }  
+    </style>
+    
+  </head>
+  <body ng-app ng-controller='rChartsCtrl'>
+    
+    
+            <div class='container'>
+                <center><h1>Collection record of 230k rodent specimens</h1></center>
+             <button ng-click='animateMap()'>Play</button>
+             <span ng-bind='year'></span>
+             <div id='chartfc3e3024cd8' class='rChart datamaps'></div>
+            </div>
+            <script>
+              function rChartsCtrl($scope, $timeout){
+                $scope.year = 1904;
+                  $scope.animateMap = function(){
+                  if ($scope.year > 2011){
+                    return;
+                  }
+                  mapchartfc3e3024cd8.updateChoropleth(chartParams.newData[$scope.year]);
+                  $scope.year += 1
+                  $timeout($scope.animateMap, 1000)
+                }
+              }
+           </script>    
+    <script id='popup-template' type='text/x-handlebars-template'>
+    
+</script>
+<script>
+  var chartParams = {
+ "dom": "chartfc3e3024cd8",
+"width":    800,
+"height":    400,
+"scope": "usa",
+"fills": {
+ "(8,16]": "#FEE5D9",
+"(16,40]": "#FCAE91",
+"(40,176]": "#FB6A4A",
+"(176,2.14e+04]": "#CB181D" 
+},
+"legend": true,
+"labels": true,
+"bodyattrs": "ng-app ng-controller='rChartsCtrl'",
+"newData": {
+ "1904": {
+ "CA": {
+ "X": 166,
+"State": "CA",
+"Year": 1904,
+"Counts": 178,
+"fillKey": "(176,2.14e+04]" 
+} 
+},
+"1905": {
+ "OR": {
+ "X": 93,
+"State": "OR",
+"Year": 1905,
+"Counts": 32,
+"fillKey": "(16,40]" 
+},
+"CA": {
+ "X": 168,
+"State": "CA",
+"Year": 1905,
+"Counts": 18,
+"fillKey": "(16,40]" 
+} 
+},
+"1907": {
+ "CA": {
+ "X": 97,
+"State": "CA",
+"Year": 1907,
+"Counts": 32,
+"fillKey": "(16,40]" 
+} 
+},
+"1910": {
+ "NV": {
+ "X": 94,
+"State": "NV",
+"Year": 1910,
+"Counts": 88,
+"fillKey": "(40,176]" 
+} 
+},
+"1911": {
+ "CA": {
+ "X": 164,
+"State": "CA",
+"Year": 1911,
+"Counts": 17,
+"fillKey": "(16,40]" 
+} 
+},
+"1912": {
+ "CA": {
+ "X": 169,
+"State": "CA",
+"Year": 1912,
+"Counts": 72,
+"fillKey": "(40,176]" 
+} 
+},
+"1913": {
+ "CA": {
+ "X": 165,
+"State": "CA",
+"Year": 1913,
+"Counts": 36,
+"fillKey": "(16,40]" 
+} 
+},
+"1916": {
+ "OR": {
+ "X": 68,
+"State": "OR",
+"Year": 1916,
+"Counts": 16,
+"fillKey": "(8,16]" 
+},
+"NV": {
+ "X": 77,
+"State": "NV",
+"Year": 1916,
+"Counts": 24,
+"fillKey": "(16,40]" 
+},
+"ID": {
+ "X": 91,
+"State": "ID",
+"Year": 1916,
+"Counts": 16,
+"fillKey": "(8,16]" 
+} 
+},
+"1918": {
+ "CA": {
+ "X": 139,
+"State": "CA",
+"Year": 1918,
+"Counts": 17,
+"fillKey": "(16,40]" 
+},
+"FL": {
+ "X": 162,
+"State": "FL",
+"Year": 1918,
+"Counts": 27,
+"fillKey": "(16,40]" 
+} 
+},
+"1919": {
+ "MD": {
+ "X": 113,
+"State": "MD",
+"Year": 1919,
+"Counts": 9,
+"fillKey": "(8,16]" 
+} 
+},
+"1920": {
+ "SD": {
+ "X": 72,
+"State": "SD",
+"Year": 1920,
+"Counts": 8,
+"fillKey": null 
+} 
+},
+"1923": {
+ "CA": {
+ "X": 167,
+"State": "CA",
+"Year": 1923,
+"Counts": 328,
+"fillKey": "(176,2.14e+04]" 
+} 
+},
+"1924": {
+ "CA": {
+ "X": 159,
+"State": "CA",
+"Year": 1924,
+"Counts": 2421,
+"fillKey": "(176,2.14e+04]" 
+},
+"OR": {
+ "X": 161,
+"State": "OR",
+"Year": 1924,
+"Counts": 45,
+"fillKey": "(40,176]" 
+} 
+},
+"1925": {
+ "NV": {
+ "X": 70,
+"State": "NV",
+"Year": 1925,
+"Counts": 192,
+"fillKey": "(176,2.14e+04]" 
+},
+"OR": {
+ "X": 88,
+"State": "OR",
+"Year": 1925,
+"Counts": 16,
+"fillKey": "(8,16]" 
+},
+"TX": {
+ "X": 154,
+"State": "TX",
+"Year": 1925,
+"Counts": 9,
+"fillKey": "(8,16]" 
+},
+"CA": {
+ "X": 163,
+"State": "CA",
+"Year": 1925,
+"Counts": 36,
+"fillKey": "(16,40]" 
+} 
+},
+"1927": {
+ "WY": {
+ "X": 58,
+"State": "WY",
+"Year": 1927,
+"Counts": 24,
+"fillKey": "(16,40]" 
+},
+"NV": {
+ "X": 79,
+"State": "NV",
+"Year": 1927,
+"Counts": 96,
+"fillKey": "(40,176]" 
+},
+"CA": {
+ "X": 82,
+"State": "CA",
+"Year": 1927,
+"Counts": 8,
+"fillKey": null 
+} 
+},
+"1928": {
+ "SD": {
+ "X": 63,
+"State": "SD",
+"Year": 1928,
+"Counts": 8,
+"fillKey": null 
+},
+"TX": {
+ "X": 66,
+"State": "TX",
+"Year": 1928,
+"Counts": 8,
+"fillKey": null 
+},
+"NV": {
+ "X": 78,
+"State": "NV",
+"Year": 1928,
+"Counts": 80,
+"fillKey": "(40,176]" 
+},
+"FL": {
+ "X": 160,
+"State": "FL",
+"Year": 1928,
+"Counts": 36,
+"fillKey": "(16,40]" 
+} 
+},
+"1929": {
+ "UT": {
+ "X": 57,
+"State": "UT",
+"Year": 1929,
+"Counts": 8,
+"fillKey": null 
+},
+"NV": {
+ "X": 59,
+"State": "NV",
+"Year": 1929,
+"Counts": 288,
+"fillKey": "(176,2.14e+04]" 
+},
+"NE": {
+ "X": 61,
+"State": "NE",
+"Year": 1929,
+"Counts": 8,
+"fillKey": null 
+},
+"OK": {
+ "X": 64,
+"State": "OK",
+"Year": 1929,
+"Counts": 8,
+"fillKey": null 
+},
+"TX": {
+ "X": 67,
+"State": "TX",
+"Year": 1929,
+"Counts": 8,
+"fillKey": null 
+} 
+},
+"1930": {
+ "NV": {
+ "X": 60,
+"State": "NV",
+"Year": 1930,
+"Counts": 40,
+"fillKey": "(16,40]" 
+} 
+},
+"1931": {
+ "NV": {
+ "X": 62,
+"State": "NV",
+"Year": 1931,
+"Counts": 8,
+"fillKey": null 
+} 
+},
+"1932": {
+ "ID": {
+ "X": 46,
+"State": "ID",
+"Year": 1932,
+"Counts": 8,
+"fillKey": null 
+},
+"CA": {
+ "X": 55,
+"State": "CA",
+"Year": 1932,
+"Counts": 16,
+"fillKey": "(8,16]" 
+},
+"TX": {
+ "X": 65,
+"State": "TX",
+"Year": 1932,
+"Counts": 64,
+"fillKey": "(40,176]" 
+},
+"NE": {
+ "X": 80,
+"State": "NE",
+"Year": 1932,
+"Counts": 16,
+"fillKey": "(8,16]" 
+},
+"NV": {
+ "X": 83,
+"State": "NV",
+"Year": 1932,
+"Counts": 8,
+"fillKey": null 
+} 
+},
+"1933": {
+ "SD": {
+ "X": 69,
+"State": "SD",
+"Year": 1933,
+"Counts": 8,
+"fillKey": null 
+},
+"NV": {
+ "X": 81,
+"State": "NV",
+"Year": 1933,
+"Counts": 8,
+"fillKey": null 
+},
+"NE": {
+ "X": 138,
+"State": "NE",
+"Year": 1933,
+"Counts": 298,
+"fillKey": "(176,2.14e+04]" 
+} 
+},
+"1934": {
+ "NE": {
+ "X": 54,
+"State": "NE",
+"Year": 1934,
+"Counts": 56,
+"fillKey": "(40,176]" 
+},
+"SD": {
+ "X": 75,
+"State": "SD",
+"Year": 1934,
+"Counts": 112,
+"fillKey": "(40,176]" 
+},
+"CA": {
+ "X": 181,
+"State": "CA",
+"Year": 1934,
+"Counts": 79,
+"fillKey": "(40,176]" 
+} 
+},
+"1935": {
+ "OK": {
+ "X": 52,
+"State": "OK",
+"Year": 1935,
+"Counts": 280,
+"fillKey": "(176,2.14e+04]" 
+},
+"AZ": {
+ "X": 53,
+"State": "AZ",
+"Year": 1935,
+"Counts": 56,
+"fillKey": "(40,176]" 
+},
+"NV": {
+ "X": 76,
+"State": "NV",
+"Year": 1935,
+"Counts": 16,
+"fillKey": "(8,16]" 
+},
+"OR": {
+ "X": 92,
+"State": "OR",
+"Year": 1935,
+"Counts": 48,
+"fillKey": "(40,176]" 
+},
+"TX": {
+ "X": 122,
+"State": "TX",
+"Year": 1935,
+"Counts": 8,
+"fillKey": null 
+},
+"CA": {
+ "X": 180,
+"State": "CA",
+"Year": 1935,
+"Counts": 49,
+"fillKey": "(40,176]" 
+} 
+},
+"1936": {
+ "CA": {
+ "X": 51,
+"State": "CA",
+"Year": 1936,
+"Counts": 24,
+"fillKey": "(16,40]" 
+},
+"NE": {
+ "X": 71,
+"State": "NE",
+"Year": 1936,
+"Counts": 576,
+"fillKey": "(176,2.14e+04]" 
+},
+"SD": {
+ "X": 182,
+"State": "SD",
+"Year": 1936,
+"Counts": 321,
+"fillKey": "(176,2.14e+04]" 
+} 
+},
+"1937": {
+ "FL": {
+ "X": 42,
+"State": "FL",
+"Year": 1937,
+"Counts": 8,
+"fillKey": null 
+},
+"CO": {
+ "X": 56,
+"State": "CO",
+"Year": 1937,
+"Counts": 216,
+"fillKey": "(176,2.14e+04]" 
+},
+"CA": {
+ "X": 74,
+"State": "CA",
+"Year": 1937,
+"Counts": 312,
+"fillKey": "(176,2.14e+04]" 
+},
+"SD": {
+ "X": 109,
+"State": "SD",
+"Year": 1937,
+"Counts": 8,
+"fillKey": null 
+} 
+},
+"1938": {
+ "NV": {
+ "X": 48,
+"State": "NV",
+"Year": 1938,
+"Counts": 8,
+"fillKey": null 
+},
+"CA": {
+ "X": 144,
+"State": "CA",
+"Year": 1938,
+"Counts": 12447,
+"fillKey": "(176,2.14e+04]" 
+} 
+},
+"1939": {
+ "CA": {
+ "X": 86,
+"State": "CA",
+"Year": 1939,
+"Counts": 72,
+"fillKey": "(40,176]" 
+},
+"NV": {
+ "X": 158,
+"State": "NV",
+"Year": 1939,
+"Counts": 33,
+"fillKey": "(16,40]" 
+} 
+},
+"1940": {
+ "CA": {
+ "X": 184,
+"State": "CA",
+"Year": 1940,
+"Counts": 167,
+"fillKey": "(40,176]" 
+} 
+},
+"1941": {
+ "NE": {
+ "X": 43,
+"State": "NE",
+"Year": 1941,
+"Counts": 72,
+"fillKey": "(40,176]" 
+},
+"CA": {
+ "X": 183,
+"State": "CA",
+"Year": 1941,
+"Counts": 42,
+"fillKey": "(40,176]" 
+} 
+},
+"1942": {
+ "NE": {
+ "X": 40,
+"State": "NE",
+"Year": 1942,
+"Counts": 24,
+"fillKey": "(16,40]" 
+} 
+},
+"1943": {
+ "CA": {
+ "X": 39,
+"State": "CA",
+"Year": 1943,
+"Counts": 8,
+"fillKey": null 
+} 
+},
+"1944": {
+ "CA": {
+ "X": 157,
+"State": "CA",
+"Year": 1944,
+"Counts": 162,
+"fillKey": "(40,176]" 
+} 
+},
+"1946": {
+ "CA": {
+ "X": 41,
+"State": "CA",
+"Year": 1946,
+"Counts": 24,
+"fillKey": "(16,40]" 
+} 
+},
+"1947": {
+ "ID": {
+ "X": 49,
+"State": "ID",
+"Year": 1947,
+"Counts": 8,
+"fillKey": null 
+},
+"NV": {
+ "X": 50,
+"State": "NV",
+"Year": 1947,
+"Counts": 32,
+"fillKey": "(16,40]" 
+},
+"CA": {
+ "X": 185,
+"State": "CA",
+"Year": 1947,
+"Counts": 36,
+"fillKey": "(16,40]" 
+} 
+},
+"1948": {
+ "OR": {
+ "X": 44,
+"State": "OR",
+"Year": 1948,
+"Counts": 160,
+"fillKey": "(40,176]" 
+},
+"NV": {
+ "X": 45,
+"State": "NV",
+"Year": 1948,
+"Counts": 160,
+"fillKey": "(40,176]" 
+},
+"CA": {
+ "X": 156,
+"State": "CA",
+"Year": 1948,
+"Counts": 242,
+"fillKey": "(176,2.14e+04]" 
+} 
+},
+"1949": {
+ "OR": {
+ "X": 38,
+"State": "OR",
+"Year": 1949,
+"Counts": 40,
+"fillKey": "(16,40]" 
+},
+"CA": {
+ "X": 155,
+"State": "CA",
+"Year": 1949,
+"Counts": 18,
+"fillKey": "(16,40]" 
+} 
+},
+"1950": {
+ "MT": {
+ "X": 31,
+"State": "MT",
+"Year": 1950,
+"Counts": 8,
+"fillKey": null 
+},
+"WY": {
+ "X": 36,
+"State": "WY",
+"Year": 1950,
+"Counts": 24,
+"fillKey": "(16,40]" 
+},
+"CA": {
+ "X": 131,
+"State": "CA",
+"Year": 1950,
+"Counts": 120,
+"fillKey": "(40,176]" 
+} 
+},
+"1951": {
+ "WY": {
+ "X": 16,
+"State": "WY",
+"Year": 1951,
+"Counts": 40,
+"fillKey": "(16,40]" 
+},
+"NV": {
+ "X": 35,
+"State": "NV",
+"Year": 1951,
+"Counts": 40,
+"fillKey": "(16,40]" 
+},
+"CA": {
+ "X": 153,
+"State": "CA",
+"Year": 1951,
+"Counts": 50,
+"fillKey": "(40,176]" 
+} 
+},
+"1952": {
+ "WY": {
+ "X": 15,
+"State": "WY",
+"Year": 1952,
+"Counts": 8,
+"fillKey": null 
+},
+"NV": {
+ "X": 30,
+"State": "NV",
+"Year": 1952,
+"Counts": 8,
+"fillKey": null 
+},
+"CA": {
+ "X": 188,
+"State": "CA",
+"Year": 1952,
+"Counts": 210,
+"fillKey": "(176,2.14e+04]" 
+} 
+},
+"1953": {
+ "OR": {
+ "X": 1,
+"State": "OR",
+"Year": 1953,
+"Counts": 8,
+"fillKey": null 
+},
+"NE": {
+ "X": 24,
+"State": "NE",
+"Year": 1953,
+"Counts": 8,
+"fillKey": null 
+},
+"WY": {
+ "X": 33,
+"State": "WY",
+"Year": 1953,
+"Counts": 80,
+"fillKey": "(40,176]" 
+},
+"CO": {
+ "X": 37,
+"State": "CO",
+"Year": 1953,
+"Counts": 144,
+"fillKey": "(40,176]" 
+},
+"TX": {
+ "X": 151,
+"State": "TX",
+"Year": 1953,
+"Counts": 26,
+"fillKey": "(16,40]" 
+},
+"CA": {
+ "X": 152,
+"State": "CA",
+"Year": 1953,
+"Counts": 69,
+"fillKey": "(40,176]" 
+} 
+},
+"1954": {
+ "CA": {
+ "X": 32,
+"State": "CA",
+"Year": 1954,
+"Counts": 32,
+"fillKey": "(16,40]" 
+},
+"CO": {
+ "X": 34,
+"State": "CO",
+"Year": 1954,
+"Counts": 112,
+"fillKey": "(40,176]" 
+},
+"TX": {
+ "X": 150,
+"State": "TX",
+"Year": 1954,
+"Counts": 18,
+"fillKey": "(16,40]" 
+} 
+},
+"1955": {
+ "CO": {
+ "X": 23,
+"State": "CO",
+"Year": 1955,
+"Counts": 344,
+"fillKey": "(176,2.14e+04]" 
+},
+"CA": {
+ "X": 28,
+"State": "CA",
+"Year": 1955,
+"Counts": 16,
+"fillKey": "(8,16]" 
+},
+"ID": {
+ "X": 29,
+"State": "ID",
+"Year": 1955,
+"Counts": 24,
+"fillKey": "(16,40]" 
+} 
+},
+"1956": {
+ "NV": {
+ "X": 22,
+"State": "NV",
+"Year": 1956,
+"Counts": 8,
+"fillKey": null 
+},
+"WY": {
+ "X": 25,
+"State": "WY",
+"Year": 1956,
+"Counts": 192,
+"fillKey": "(176,2.14e+04]" 
+},
+"NE": {
+ "X": 27,
+"State": "NE",
+"Year": 1956,
+"Counts": 112,
+"fillKey": "(40,176]" 
+},
+"CA": {
+ "X": 47,
+"State": "CA",
+"Year": 1956,
+"Counts": 88,
+"fillKey": "(40,176]" 
+} 
+},
+"1957": {
+ "AZ": {
+ "X": 6,
+"State": "AZ",
+"Year": 1957,
+"Counts": 16,
+"fillKey": "(8,16]" 
+},
+"CA": {
+ "X": 177,
+"State": "CA",
+"Year": 1957,
+"Counts": 386,
+"fillKey": "(176,2.14e+04]" 
+} 
+},
+"1958": {
+ "CA": {
+ "X": 176,
+"State": "CA",
+"Year": 1958,
+"Counts": 138,
+"fillKey": "(40,176]" 
+} 
+},
+"1959": {
+ "NV": {
+ "X": 18,
+"State": "NV",
+"Year": 1959,
+"Counts": 376,
+"fillKey": "(176,2.14e+04]" 
+},
+"WY": {
+ "X": 19,
+"State": "WY",
+"Year": 1959,
+"Counts": 8,
+"fillKey": null 
+},
+"NE": {
+ "X": 20,
+"State": "NE",
+"Year": 1959,
+"Counts": 8,
+"fillKey": null 
+},
+"OR": {
+ "X": 26,
+"State": "OR",
+"Year": 1959,
+"Counts": 32,
+"fillKey": "(16,40]" 
+},
+"FL": {
+ "X": 133,
+"State": "FL",
+"Year": 1959,
+"Counts": 18,
+"fillKey": "(16,40]" 
+},
+"CA": {
+ "X": 149,
+"State": "CA",
+"Year": 1959,
+"Counts": 555,
+"fillKey": "(176,2.14e+04]" 
+} 
+},
+"1960": {
+ "OR": {
+ "X": 13,
+"State": "OR",
+"Year": 1960,
+"Counts": 8,
+"fillKey": null 
+},
+"NV": {
+ "X": 14,
+"State": "NV",
+"Year": 1960,
+"Counts": 104,
+"fillKey": "(40,176]" 
+},
+"CA": {
+ "X": 148,
+"State": "CA",
+"Year": 1960,
+"Counts": 112,
+"fillKey": "(40,176]" 
+} 
+},
+"1961": {
+ "NV": {
+ "X": 12,
+"State": "NV",
+"Year": 1961,
+"Counts": 800,
+"fillKey": "(176,2.14e+04]" 
+},
+"OR": {
+ "X": 73,
+"State": "OR",
+"Year": 1961,
+"Counts": 64,
+"fillKey": "(40,176]" 
+},
+"CA": {
+ "X": 121,
+"State": "CA",
+"Year": 1961,
+"Counts": 120,
+"fillKey": "(40,176]" 
+},
+"NM": {
+ "X": 170,
+"State": "NM",
+"Year": 1961,
+"Counts": 9,
+"fillKey": "(8,16]" 
+} 
+},
+"1962": {
+ "NE": {
+ "X": 7,
+"State": "NE",
+"Year": 1962,
+"Counts": 136,
+"fillKey": "(40,176]" 
+},
+"NM": {
+ "X": 8,
+"State": "NM",
+"Year": 1962,
+"Counts": 56,
+"fillKey": "(40,176]" 
+},
+"CA": {
+ "X": 9,
+"State": "CA",
+"Year": 1962,
+"Counts": 16,
+"fillKey": "(8,16]" 
+},
+"NV": {
+ "X": 10,
+"State": "NV",
+"Year": 1962,
+"Counts": 1432,
+"fillKey": "(176,2.14e+04]" 
+},
+"OR": {
+ "X": 11,
+"State": "OR",
+"Year": 1962,
+"Counts": 5544,
+"fillKey": "(176,2.14e+04]" 
+},
+"OK": {
+ "X": 21,
+"State": "OK",
+"Year": 1962,
+"Counts": 8,
+"fillKey": null 
+} 
+},
+"1963": {
+ "OK": {
+ "X": 5,
+"State": "OK",
+"Year": 1963,
+"Counts": 8,
+"fillKey": null 
+},
+"OR": {
+ "X": 114,
+"State": "OR",
+"Year": 1963,
+"Counts": 12976,
+"fillKey": "(176,2.14e+04]" 
+},
+"NV": {
+ "X": 146,
+"State": "NV",
+"Year": 1963,
+"Counts": 135,
+"fillKey": "(40,176]" 
+},
+"CA": {
+ "X": 147,
+"State": "CA",
+"Year": 1963,
+"Counts": 170,
+"fillKey": "(40,176]" 
+} 
+},
+"1964": {
+ "CA": {
+ "X": 3,
+"State": "CA",
+"Year": 1964,
+"Counts": 112,
+"fillKey": "(40,176]" 
+},
+"MT": {
+ "X": 4,
+"State": "MT",
+"Year": 1964,
+"Counts": 8,
+"fillKey": null 
+} 
+},
+"1965": {
+ "NV": {
+ "X": 2,
+"State": "NV",
+"Year": 1965,
+"Counts": 16,
+"fillKey": "(8,16]" 
+},
+"CA": {
+ "X": 145,
+"State": "CA",
+"Year": 1965,
+"Counts": 81,
+"fillKey": "(40,176]" 
+} 
+},
+"1966": {
+ "OR": {
+ "X": 87,
+"State": "OR",
+"Year": 1966,
+"Counts": 32,
+"fillKey": "(16,40]" 
+},
+"CA": {
+ "X": 186,
+"State": "CA",
+"Year": 1966,
+"Counts": 5193,
+"fillKey": "(176,2.14e+04]" 
+} 
+},
+"1967": {
+ "CA": {
+ "X": 140,
+"State": "CA",
+"Year": 1967,
+"Counts": 18,
+"fillKey": "(16,40]" 
+} 
+},
+"1968": {
+ "CA": {
+ "X": 179,
+"State": "CA",
+"Year": 1968,
+"Counts": 1179,
+"fillKey": "(176,2.14e+04]" 
+} 
+},
+"1969": {
+ "CA": {
+ "X": 143,
+"State": "CA",
+"Year": 1969,
+"Counts": 261,
+"fillKey": "(176,2.14e+04]" 
+} 
+},
+"1970": {
+ "CA": {
+ "X": 142,
+"State": "CA",
+"Year": 1970,
+"Counts": 10044,
+"fillKey": "(176,2.14e+04]" 
+} 
+},
+"1971": {
+ "CA": {
+ "X": 141,
+"State": "CA",
+"Year": 1971,
+"Counts": 9,
+"fillKey": "(8,16]" 
+} 
+},
+"1972": {
+ "CA": {
+ "X": 17,
+"State": "CA",
+"Year": 1972,
+"Counts": 16,
+"fillKey": "(8,16]" 
+} 
+},
+"1974": {
+ "ID": {
+ "X": 117,
+"State": "ID",
+"Year": 1974,
+"Counts": 18,
+"fillKey": "(16,40]" 
+},
+"CA": {
+ "X": 134,
+"State": "CA",
+"Year": 1974,
+"Counts": 32,
+"fillKey": "(16,40]" 
+},
+"UT": {
+ "X": 137,
+"State": "UT",
+"Year": 1974,
+"Counts": 9,
+"fillKey": "(8,16]" 
+} 
+},
+"1976": {
+ "OR": {
+ "X": 90,
+"State": "OR",
+"Year": 1976,
+"Counts": 8,
+"fillKey": null 
+} 
+},
+"1978": {
+ "CA": {
+ "X": 107,
+"State": "CA",
+"Year": 1978,
+"Counts": 423,
+"fillKey": "(176,2.14e+04]" 
+} 
+},
+"1979": {
+ "CA": {
+ "X": 120,
+"State": "CA",
+"Year": 1979,
+"Counts": 33,
+"fillKey": "(16,40]" 
+} 
+},
+"1980": {
+ "CA": {
+ "X": 135,
+"State": "CA",
+"Year": 1980,
+"Counts": 18,
+"fillKey": "(16,40]" 
+},
+"AZ": {
+ "X": 173,
+"State": "AZ",
+"Year": 1980,
+"Counts": 9,
+"fillKey": "(8,16]" 
+} 
+},
+"1982": {
+ "WY": {
+ "X": 98,
+"State": "WY",
+"Year": 1982,
+"Counts": 8,
+"fillKey": null 
+} 
+},
+"1985": {
+ "CO": {
+ "X": 111,
+"State": "CO",
+"Year": 1985,
+"Counts": 10692,
+"fillKey": "(176,2.14e+04]" 
+} 
+},
+"1986": {
+ "CA": {
+ "X": 95,
+"State": "CA",
+"Year": 1986,
+"Counts": 80,
+"fillKey": "(40,176]" 
+},
+"CO": {
+ "X": 126,
+"State": "CO",
+"Year": 1986,
+"Counts": 1818,
+"fillKey": "(176,2.14e+04]" 
+},
+"WA": {
+ "X": 171,
+"State": "WA",
+"Year": 1986,
+"Counts": 9,
+"fillKey": "(8,16]" 
+},
+"ID": {
+ "X": 175,
+"State": "ID",
+"Year": 1986,
+"Counts": 9,
+"fillKey": "(8,16]" 
+} 
+},
+"1987": {
+ "WY": {
+ "X": 99,
+"State": "WY",
+"Year": 1987,
+"Counts": 240,
+"fillKey": "(176,2.14e+04]" 
+},
+"CO": {
+ "X": 127,
+"State": "CO",
+"Year": 1987,
+"Counts": 2178,
+"fillKey": "(176,2.14e+04]" 
+},
+"MT": {
+ "X": 132,
+"State": "MT",
+"Year": 1987,
+"Counts": 99,
+"fillKey": "(40,176]" 
+} 
+},
+"1988": {
+ "CO": {
+ "X": 129,
+"State": "CO",
+"Year": 1988,
+"Counts": 3042,
+"fillKey": "(176,2.14e+04]" 
+},
+"WY": {
+ "X": 136,
+"State": "WY",
+"Year": 1988,
+"Counts": 7296,
+"fillKey": "(176,2.14e+04]" 
+},
+"CA": {
+ "X": 172,
+"State": "CA",
+"Year": 1988,
+"Counts": 18,
+"fillKey": "(16,40]" 
+} 
+},
+"1990": {
+ "WY": {
+ "X": 100,
+"State": "WY",
+"Year": 1990,
+"Counts": 1760,
+"fillKey": "(176,2.14e+04]" 
+} 
+},
+"1991": {
+ "WY": {
+ "X": 103,
+"State": "WY",
+"Year": 1991,
+"Counts": 3248,
+"fillKey": "(176,2.14e+04]" 
+},
+"CA": {
+ "X": 125,
+"State": "CA",
+"Year": 1991,
+"Counts": 207,
+"fillKey": "(176,2.14e+04]" 
+},
+"CO": {
+ "X": 128,
+"State": "CO",
+"Year": 1991,
+"Counts": 18,
+"fillKey": "(16,40]" 
+} 
+},
+"1992": {
+ "WY": {
+ "X": 102,
+"State": "WY",
+"Year": 1992,
+"Counts": 21400,
+"fillKey": "(176,2.14e+04]" 
+} 
+},
+"1993": {
+ "WY": {
+ "X": 101,
+"State": "WY",
+"Year": 1993,
+"Counts": 4944,
+"fillKey": "(176,2.14e+04]" 
+},
+"CA": {
+ "X": 124,
+"State": "CA",
+"Year": 1993,
+"Counts": 18,
+"fillKey": "(16,40]" 
+},
+"CO": {
+ "X": 130,
+"State": "CO",
+"Year": 1993,
+"Counts": 3015,
+"fillKey": "(176,2.14e+04]" 
+} 
+},
+"1994": {
+ "CA": {
+ "X": 118,
+"State": "CA",
+"Year": 1994,
+"Counts": 18,
+"fillKey": "(16,40]" 
+},
+"NV": {
+ "X": 123,
+"State": "NV",
+"Year": 1994,
+"Counts": 9,
+"fillKey": "(8,16]" 
+} 
+},
+"1995": {
+ "CA": {
+ "X": 119,
+"State": "CA",
+"Year": 1995,
+"Counts": 108,
+"fillKey": "(40,176]" 
+} 
+},
+"1996": {
+ "OR": {
+ "X": 85,
+"State": "OR",
+"Year": 1996,
+"Counts": 8,
+"fillKey": null 
+},
+"CO": {
+ "X": 108,
+"State": "CO",
+"Year": 1996,
+"Counts": 18,
+"fillKey": "(16,40]" 
+} 
+},
+"1998": {
+ "CA": {
+ "X": 110,
+"State": "CA",
+"Year": 1998,
+"Counts": 117,
+"fillKey": "(40,176]" 
+} 
+},
+"1999": {
+ "CO": {
+ "X": 187,
+"State": "CO",
+"Year": 1999,
+"Counts": 9884,
+"fillKey": "(176,2.14e+04]" 
+} 
+},
+"2002": {
+ "CO": {
+ "X": 116,
+"State": "CO",
+"Year": 2002,
+"Counts": 990,
+"fillKey": "(176,2.14e+04]" 
+} 
+},
+"2004": {
+ "CO": {
+ "X": 112,
+"State": "CO",
+"Year": 2004,
+"Counts": 3380,
+"fillKey": "(176,2.14e+04]" 
+} 
+},
+"2005": {
+ "OR": {
+ "X": 84,
+"State": "OR",
+"Year": 2005,
+"Counts": 8,
+"fillKey": null 
+},
+"CO": {
+ "X": 115,
+"State": "CO",
+"Year": 2005,
+"Counts": 7367,
+"fillKey": "(176,2.14e+04]" 
+} 
+},
+"2006": {
+ "WA": {
+ "X": 106,
+"State": "WA",
+"Year": 2006,
+"Counts": 658,
+"fillKey": "(176,2.14e+04]" 
+} 
+},
+"2007": {
+ "CA": {
+ "X": 96,
+"State": "CA",
+"Year": 2007,
+"Counts": 12952,
+"fillKey": "(176,2.14e+04]" 
+} 
+},
+"2008": {
+ "CA": {
+ "X": 174,
+"State": "CA",
+"Year": 2008,
+"Counts": 801,
+"fillKey": "(176,2.14e+04]" 
+} 
+},
+"2009": {
+ "CA": {
+ "X": 105,
+"State": "CA",
+"Year": 2009,
+"Counts": 144,
+"fillKey": "(40,176]" 
+} 
+},
+"2011": {
+ "CA": {
+ "X": 104,
+"State": "CA",
+"Year": 2011,
+"Counts": 144,
+"fillKey": "(40,176]" 
+} 
+} 
+},
+"data": {
+ "CA": {
+ "X": 166,
+"State": "CA",
+"Year": 1904,
+"Counts": 178,
+"fillKey": "(176,2.14e+04]" 
+} 
+},
+"id": "chartfc3e3024cd8" 
+}
+  chartParams.element = document.getElementById('chartfc3e3024cd8')
+  
+  
+  var mapchartfc3e3024cd8 = new Datamap(chartParams);
+  
+  
+    
+  // draw a bubble map if specified
+  if (chartParams.bubbles) {
+    var bubbles = chartParams.bubbles
+    mapchartfc3e3024cd8.bubbles(bubbles)
+  }
+  
+  if (chartParams.labels){
+    mapchartfc3e3024cd8.labels()
+  }
+  
+  if (chartParams.legend){
+    mapchartfc3e3024cd8.legend()
+  }
+  
+  setProjection = function( element, options ) {
+    var projection, path;
+ 
+      projection = d3.geo.albersUsa()
+        .scale(element.offsetWidth)
+        .translate([element.offsetWidth / 2, element.offsetHeight / 2]);
+ 
+    path = d3.geo.path()
+      .projection( projection );
+ 
+    return {path: path, projection: projection};
+  }
+</script>
+
+<style>
+.datamaps {
+  position: relative;
+}
+</style>
+    
+    <script></script>    
+  </body>
+</html>
