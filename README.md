@@ -31,7 +31,7 @@ __To knit this presentation__
 
 ```coffee
 # Edit the index.Rhtml file if you need to
-Rscript -e "knit('index.Rhtml')"
+Rscript -e "library(knitr); knit('index.Rhtml')"
 ```
 
 Questions or comments to karthik dot ram at gmail dot com
