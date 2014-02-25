@@ -536,8 +536,9 @@ The engine has the full database of Cal photos
 
 
 <section class="slide" id="photos_example">
-<h2>Browse photos</h2>	
-<br><br>
+<h2>Browse photos</h2><br>	
+Quickly browse any photo search query with <code>view_photos()</code>
+<br>
 <div class="chunk" id="photo_viewer"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl std">poppys</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">ee_photos</span><span class="hl std">(</span><span class="hl kwc">scientific_name</span> <span class="hl std">=</span> <span class="hl str">&quot;Eschscholzia californica&quot;</span><span class="hl std">,</span> <span class="hl kwc">quiet</span> <span class="hl std">=</span> <span class="hl num">TRUE</span><span class="hl std">,</span>
     <span class="hl kwc">progress</span> <span class="hl std">=</span> <span class="hl num">FALSE</span><span class="hl std">)</span>
 <span class="hl kwd">view_photos</span><span class="hl std">(poppys)</span>
@@ -550,7 +551,8 @@ The engine has the full database of Cal photos
 
 <section class="slide" id="more_info">
 	<div>
-		<h2>Grab a PDF guide to the package</h2>
+		<h2>Grab a PDF guide to the package</h2><br>
+		The vignette walks you through all of the functions available from the package with a full set of examples
 <a href="https://github.com/ropensci/ecoengine/blob/master/inst/Using_ecoengine.pdf?raw=true"><img src="images/pdf_ecoengine.png"></a>
 </div>
 </section>
