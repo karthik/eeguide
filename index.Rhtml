@@ -16,8 +16,6 @@
     <script src="http://use.edgefonts.net/quattrocento-sans.js"></script>
     <script src="http://use.edgefonts.net/gentium-book-basic.js"></script>
     <script src="//use.edgefonts.net/kotta-one.js"></script>
-    <script type="text/javascript" src="//use.typekit.net/xsl8aec.js"></script>
-<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 	<link rel="stylesheet" href="core/deck.core.css">
 	<link rel="stylesheet" href="extensions/goto/deck.goto.css">
 	<link rel="stylesheet" href="extensions/menu/deck.menu.css">
@@ -45,7 +43,7 @@
 	<hgroup>
 	<img src="images/ropensci.png">
 	<center><h3><span style="color:#34495E; font-size:70px">A guide to using the Ecoengine package</span><i class="ss-globe"></i></h3><br><br>
-	<h4> <span style="color:#79cef7;"><i class="ss-icon ss-social">twitter</i></span> <a href="https://twitter.com/_inundata">@_inundata</a> &nbsp;<br>
+	<h4> <a href="https://twitter.com/_inundata">@_inundata</a> &nbsp;<br>
 	karthik.github.io/eeguide	
 	</h4>
 	</center>
@@ -60,9 +58,9 @@
 <section class="slide" id="installing_package">
 <br><br>
 <h2>Installing the package</h2>
-<!--begin.rcode installing,  eval = FALSE, message=FALSE, fig.align='center', cache = TRUE
+<!--begin.rcode installing,  eval = FALSE, message = FALSE, fig.align = 'center', cache = TRUE
 install.packages("ecoengine")
-# Requires version 3.0.1 or higher of R
+# Requires R version 3.0.1 or higher
 end.rcode-->
 </section>
 
@@ -70,7 +68,7 @@ end.rcode-->
 <section class="slide" id="ecoengine">
 <br><br>
 <h2>The ecoengine API</h2>
-<!--begin.rcode basic, message=FALSE, fig.align='center'
+<!--begin.rcode basic, message = FALSE, fig.align = 'center'
 library(ecoengine)
 ee_about()
     end.rcode-->
@@ -81,7 +79,7 @@ ee_about()
 <section class="slide" id="ecoengine_sources">
 <br><br>
 <h2>Data sources in the API</h2>
-<!--begin.rcode ee_sources, message=FALSE, fig.align='center', cache = TRUE
+<!--begin.rcode ee_sources, message = FALSE, fig.align = 'center', cache = TRUE
 source_list <- ee_sources() 
 unique(source_list$name)
 end.rcode-->
@@ -91,7 +89,7 @@ end.rcode-->
 <section class="slide" id="about_ee">
 <br><br>
 <h2>Retrieving observation data</h2>
-<!--begin.rcode ee_obs1, message=FALSE, fig.align='center', cache = TRUE
+<!--begin.rcode ee_obs1, message = FALSE, fig.align = 'center', cache = TRUE
 results <- ee_observations(genus = "Lynx", progress = FALSE)
 results
     end.rcode-->
@@ -102,7 +100,7 @@ results
 <section class="slide" id="ee_obs">
 <br><br>
 <h2>Retrieving multiple pages of data</h2>
-<!--begin.rcode ee_obs, message=FALSE, fig.align='center', cache = TRUE
+<!--begin.rcode ee_obs, message = FALSE, fig.align = 'center', cache = TRUE
 results <- ee_observations(genus = "Lynx", page = 1:2,  progress = FALSE)
 results
     end.rcode-->
@@ -113,7 +111,7 @@ results
 <section class="slide" id="pinus">
 <br><br>
 <h2>Retrieving data for a particular species</h2>
-<!--begin.rcode pinus, message=FALSE, fig.align='center', cache = TRUE
+<!--begin.rcode pinus, message = FALSE, fig.align = 'center', cache = TRUE
 pinus_observations <- ee_observations(scientific_name = "Pinus", page = 1, quiet = TRUE, progress = FALSE)
 pinus_observations
     end.rcode-->
@@ -124,7 +122,7 @@ pinus_observations
 <section class="slide" id="ecoengine4">
 <h2>More examples of searches</h2>	
 <br><br>
-<!--begin.rcode more_examples, eval=FALSE, message=FALSE, fig.align='center', cache = TRUE
+<!--begin.rcode more_examples, eval=FALSE, message = FALSE, fig.align = 'center', cache = TRUE
 animalia <- ee_observations(kingdom = "Animalia")
 Artemisia <- ee_observations(scientific_name = "Artemisia douglasiana") 
 asteraceae <- ee_observationss(family = "asteraceae")
@@ -145,7 +143,7 @@ end.rcode-->
 <section class="slide" id="ee_interactive_maps">
 <h2>Generate interactive maps with ecoengine</h2>	
 <br><br>
-<!--begin.rcode map, eval=FALSE, message=FALSE, fig.align='center', cache = TRUE
+<!--begin.rcode map, eval=FALSE, message = FALSE, fig.align = 'center', cache = TRUE
 lynx_data <- ee_observations(genus = "Lynx", georeferenced = TRUE, page = "all", quiet = TRUE)
 ee_map(lynx_data)
 end.rcode-->
@@ -157,7 +155,7 @@ end.rcode-->
 <section class="slide" id="sensors">
 <h2>Sensor data</h2>	
 <br><br>
-<!--begin.rcode sensor_data, eval=TRUE, message=FALSE, fig.align='center', cache = TRUE
+<!--begin.rcode sensor_data, eval=TRUE, message = FALSE, fig.align = 'center', cache = TRUE
 head(ee_list_sensors())
 end.rcode-->
 
@@ -167,7 +165,7 @@ end.rcode-->
 <section class="slide" id="sensors_data">
 <h2>Sensor data</h2>	
 <br><br>
-<!--begin.rcode sensor_data2, eval=TRUE, message=FALSE, fig.align='center', cache = TRUE
+<!--begin.rcode sensor_data2, eval=TRUE, message = FALSE, fig.align = 'center', cache = TRUE
 # First we can grab the list of sensor ids
 sensor_ids <- ee_list_sensors()$record
 # In this case we just need data for sensor with id 1625 
@@ -180,13 +178,13 @@ end.rcode-->
 <section class="slide" id="agg_sensor_data">
 <h2>Aggregated Sensor data</h2>	
 <br><br>
-<!--begin.rcode agg_sensor_data, eval=TRUE, message=FALSE, fig.align='center', cache = TRUE
+<!--begin.rcode agg_sensor_data, eval=TRUE, message = FALSE, fig.align = 'center', cache = TRUE
 stations <- ee_list_sensors()
 sensor_df <- ee_sensor_agg(sensor_id = stations[1, c("record")], weeks = 2,
     progress = FALSE)
  head(sensor_df$data)
 end.rcode-->
-<!--begin.rcode agg_sensor_data_plot, eval=TRUE, echo = FALSE, message=FALSE, fig.align='center', cache = TRUE
+<!--begin.rcode agg_sensor_data_plot, eval=TRUE, echo = FALSE, message = FALSE, fig.align = 'center', cache = TRUE
 library(ggplot2)
 plt <- ggplot(sensor_df$data, aes(begin_date, mean)) + geom_line(size = 1, color = "steelblue") +
 geom_point() + theme_gray() + ylab("Solar radiation total kj/m^2") + xlab("Date") + ggtitle("Data from Angelo HQ")
@@ -200,7 +198,7 @@ end.rcode-->
 <section class="slide" id="ecoengine9">
 <h2>Downloading large amounts of data</h2>	
 <br><br>
-<!--begin.rcode large_data, eval=FALSE, message=FALSE, fig.align='center', cache = TRUE
+<!--begin.rcode large_data, eval=FALSE, message = FALSE, fig.align = 'center', cache = TRUE
 rodent_pages <- ee_pages(ee_observations(order = "Rodentia", progress = FALSE, quiet = TRUE))
 page_breaks <- split(1:rodent_pages, ceiling(seq_along(1:rodent_pages)/1000))
 rodent_data <- list()
@@ -217,7 +215,7 @@ end.rcode-->
 <section class="slide" id="ecoengine9b">
 <h2>Downloading a large amount of data (a more elegant way)</h2>	
 <br><br>
-<!--begin.rcode large_data2, eval=FALSE, message=FALSE, fig.align='center', cache = TRUE
+<!--begin.rcode large_data2, eval=FALSE, message = FALSE, fig.align = 'center', cache = TRUE
 library(plyr)
 rodent_pages <- ee_pages(ee_observations(order = "Rodentia", progress = FALSE, quiet = TRUE))
 page_breaks <- split(1:rodent_pages, ceiling(seq_along(1:rodent_pages)/1000))
@@ -234,7 +232,7 @@ end.rcode-->
 <section class="slide" id="ecoengine9a">
 <h2>Summarizing the results</h2>	
 <br><br>
-<!--begin.rcode summaries, eval=FALSE, message=FALSE, fig.align='center', cache = TRUE
+<!--begin.rcode summaries, eval=FALSE, message = FALSE, fig.align = 'center', cache = TRUE
 library(dplyr)
 rodents_summary <- rodents[!is.na(rodents$year), ] %.%
 
@@ -244,7 +242,7 @@ rodents_summary <- rodents[!is.na(rodents$year), ] %.%
 names(rodents_summary) <- c("State", "Year", "Counts")
 head(rodents_summary)
 end.rcode-->
-<!--begin.rcode show_some_results, eval=TRUE, echo = FALSE, message=FALSE, fig.align='center', cache = TRUE
+<!--begin.rcode show_some_results, eval=TRUE, echo = FALSE, message = FALSE, fig.align = 'center', cache = TRUE
 rodents_summary <- read.csv("rodents_summary.csv")
 head(arrange(rodents_summary, Year))
 end.rcode-->
@@ -255,7 +253,7 @@ end.rcode-->
 
 <section class="slide" id="chloropleths">
 <h2>Chloropleths</h2>	
-<!--begin.rcode other, eval = FALSE, message=FALSE, fig.align='center', cache = TRUE
+<!--begin.rcode other, eval = FALSE, message = FALSE, fig.align = 'center', cache = TRUE
 library(rMaps)
 rodents_summary <- dplyr::filter(rodents_summary, Year > 1899)
 ichoropleth(Counts ~ State, data = rodents_summary, animate = "Year", pal = "Reds", 
@@ -269,7 +267,7 @@ end.rcode-->
 <section class="slide" id="checklists">
 <h2>Checklist Data</h2>	
 <br><br>
-<!--begin.rcode last, eval=TRUE, message=FALSE, fig.align='center', cache = TRUE
+<!--begin.rcode last, eval=TRUE, message = FALSE, fig.align = 'center', cache = TRUE
 all_lists <- ee_checklists()
 nrow(all_lists)
 unique(all_lists$subject)
@@ -280,7 +278,7 @@ end.rcode-->
 <section class="slide" id="checklists_spiders">
 <h2>Looking through one subject in the checklist</h2>	
 <br><br>
-<!--begin.rcode spiders, eval=TRUE, message=FALSE, fig.align='center', cache = TRUE
+<!--begin.rcode spiders, eval=TRUE, message = FALSE, fig.align = 'center', cache = TRUE
 spiders <- ee_checklists(subject = "Spiders")
 spiders
 end.rcode-->
@@ -291,7 +289,7 @@ end.rcode-->
 <section class="slide" id="checklists_spiders_download">
 <h2>Downloading complete checklist data</h2>	
 <br><br>
-<!--begin.rcode spider_download, eval=TRUE, message=FALSE, fig.align='center', cache = TRUE
+<!--begin.rcode spider_download, eval=TRUE, message = FALSE, fig.align = 'center', cache = TRUE
 library(plyr)
 spider_details <- ldply(spiders$url, checklist_details) 
 names(spider_details)
@@ -303,9 +301,9 @@ end.rcode-->
 
 <section class="slide" id="photos">
 <h2>Search photos</h2>
-The engine has the full database of Cal photos	
+The engine has the full database of Cal photos.	
 <br><br>
-<!--begin.rcode photos, eval=TRUE, message=FALSE, fig.align='center', cache = TRUE
+<!--begin.rcode photos, eval=TRUE, message = FALSE, fig.align = 'center', cache = TRUE
 photos <- ee_photos(quiet = TRUE, progress = FALSE) 
 photos
 end.rcode-->
@@ -317,7 +315,7 @@ end.rcode-->
 <h2>Browse photos</h2><br>	
 Quickly browse any photo search query with <code>view_photos()</code>
 <br>
-<!--begin.rcode photo_viewer, eval=FALSE, message=FALSE, fig.align='center', cache = TRUE
+<!--begin.rcode photo_viewer, eval=FALSE, message = FALSE, fig.align = 'center', cache = TRUE
 poppys <- ee_photos(scientific_name = "Eschscholzia californica", quiet = TRUE, progress = FALSE)
 view_photos(poppys)
 end.rcode-->
@@ -328,7 +326,7 @@ end.rcode-->
 <section class="slide" id="more_info">
 	<div>
 		<h2>Grab a PDF guide to the package</h2><br>
-		The vignette walks you through all of the functions available from the package with a full set of examples
+		The vignette walks you through all of the functions available from the package and has a full set of examples.
 <a href="https://github.com/ropensci/ecoengine/blob/master/inst/Using_ecoengine.pdf?raw=true"><img src="images/pdf_ecoengine.png"></a>
 </div>
 </section>
