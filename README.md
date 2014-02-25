@@ -31,6 +31,9 @@ __To knit this presentation__
 
 ```coffee
 # Edit the index.Rhtml file if you need to
+library(knitr)
+knit('index.Rhtml')
+# or from the command line
 Rscript -e "library(knitr); knit('index.Rhtml')"
 ```
 
