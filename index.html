@@ -99,7 +99,7 @@
 
 <!--    ##############    slide delimiter  ##############    -->
 
-<section class="slide" id="ropensci"  data-duration="20000">
+<section class="slide" id="ropensci">
 	<div>
 	<br><br><br>
 	<hgroup>
@@ -128,7 +128,7 @@
 </section>
 
 
-<section class="slide" id="ecoengine">
+<section class="slide" id="ecoengine_api">
 <br><br>
 <h2>The ecoengine API</h2>
 <div class="chunk" id="basic"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">library</span><span class="hl std">(ecoengine)</span>
@@ -216,7 +216,7 @@
 
 
 
-<section class="slide" id="pinus">
+<section class="slide" id="pinus_example">
 <br><br>
 <h2>Retrieving data for a particular species</h2>
 <div class="chunk" id="pinus"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl std">pinus_observations</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">ee_observations</span><span class="hl std">(</span><span class="hl kwc">scientific_name</span> <span class="hl std">=</span> <span class="hl str">&quot;Pinus&quot;</span><span class="hl std">,</span> <span class="hl kwc">page</span> <span class="hl std">=</span> <span class="hl num">1</span><span class="hl std">,</span> <span class="hl kwc">quiet</span> <span class="hl std">=</span> <span class="hl num">TRUE</span><span class="hl std">,</span>
@@ -239,7 +239,7 @@
 
 
 
-<section class="slide" id="ecoengine4">
+<section class="slide" id="more_examples">
 <h2>More examples of searches</h2>	
 <br><br>
 <div class="chunk" id="more_examples"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl std">animalia</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">ee_observations</span><span class="hl std">(</span><span class="hl kwc">kingdom</span> <span class="hl std">=</span> <span class="hl str">&quot;Animalia&quot;</span><span class="hl std">)</span>
@@ -347,7 +347,7 @@
 </section>
 
 
-<section class="slide" id="ecoengine9">
+<section class="slide" id="downloading_data">
 <h2>Downloading large amounts of data</h2>	
 <br><br>
 <div class="chunk" id="large_data"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl std">rodent_pages</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">ee_pages</span><span class="hl std">(</span><span class="hl kwd">ee_observations</span><span class="hl std">(</span><span class="hl kwc">order</span> <span class="hl std">=</span> <span class="hl str">&quot;Rodentia&quot;</span><span class="hl std">,</span> <span class="hl kwc">progress</span> <span class="hl std">=</span> <span class="hl num">FALSE</span><span class="hl std">,</span>
@@ -367,7 +367,7 @@
 </section>
 
 
-<section class="slide" id="ecoengine9b">
+<section class="slide" id="downloading_data_alt">
 <h2>Downloading a large amount of data (a more elegant way)</h2>	
 <br><br>
 <div class="chunk" id="large_data2"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">library</span><span class="hl std">(plyr)</span>
@@ -386,7 +386,7 @@
 
 
 
-<section class="slide" id="ecoengine9a">
+<section class="slide" id="summarizing_data">
 <h2>Summarizing the results</h2>	
 <br><br>
 <div class="chunk" id="summaries"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">library</span><span class="hl std">(dplyr)</span>
@@ -557,7 +557,7 @@ Quickly browse any photo search query with <code>view_photos()</code>
 
 
 <!--    ##############    closing slide  ##############    -->
-<section class="slide" id="outro">
+<section class="slide" id="fin">
 	<div>
 	<hgroup>
 	<h1>ropensci.org/ecoengine.html</h1>
