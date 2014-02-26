@@ -390,20 +390,19 @@
 <h2>Summarizing the results</h2>	
 <br><br>
 <div class="chunk" id="summaries"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">library</span><span class="hl std">(dplyr)</span>
-<span class="hl std">rodents_summary</span> <span class="hl kwb">&lt;-</span> <span class="hl std">rodents[</span><span class="hl opt">!</span><span class="hl kwd">is.na</span><span class="hl std">(rodents</span><span class="hl opt">$</span><span class="hl std">year), ]</span> <span class="hl opt">%.%</span> <span class="hl kwd">regroup</span><span class="hl std">(</span><span class="hl kwd">list</span><span class="hl std">(</span><span class="hl kwd">quote</span><span class="hl std">(abbreviation),</span>
-    <span class="hl kwd">quote</span><span class="hl std">(year)))</span> <span class="hl opt">%.%</span> <span class="hl kwd">summarise</span><span class="hl std">(</span><span class="hl kwc">n</span> <span class="hl std">=</span> <span class="hl kwd">n</span><span class="hl std">())</span>
-<span class="hl kwd">names</span><span class="hl std">(rodents_summary)</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">c</span><span class="hl std">(</span><span class="hl str">&quot;State&quot;</span><span class="hl std">,</span> <span class="hl str">&quot;Year&quot;</span><span class="hl std">,</span> <span class="hl str">&quot;Counts&quot;</span><span class="hl std">)</span>
+<span class="hl std">rodents_summary</span> <span class="hl kwb">&lt;-</span> <span class="hl std">rodents</span> <span class="hl opt">%.%</span> <span class="hl kwd">filter</span><span class="hl std">(</span><span class="hl opt">!</span><span class="hl kwd">is.na</span><span class="hl std">(year))</span> <span class="hl opt">%.%</span> <span class="hl kwd">group_by</span><span class="hl std">(</span><span class="hl kwc">state</span> <span class="hl std">= abbreviation,</span>
+    <span class="hl std">year)</span> <span class="hl opt">%.%</span> <span class="hl kwd">summarise</span><span class="hl std">(</span><span class="hl kwc">counts</span> <span class="hl std">=</span> <span class="hl kwd">n</span><span class="hl std">())</span>
 <span class="hl kwd">head</span><span class="hl std">(rodents_summary)</span>
 </pre></div>
 </div></div>
 
-<div class="chunk" id="show_some_results"><div class="rcode"><div class="output"><pre class="knitr r">##     X State Year Counts
-## 1 178    CA 1818      9
-## 2  89    OR 1899     16
-## 3 166    CA 1904    178
-## 4  93    OR 1905     32
-## 5 168    CA 1905     18
-## 6  97    CA 1907     32
+<div class="chunk" id="show_some_results"><div class="rcode"><div class="output"><pre class="knitr r">##   State Year Counts
+## 1    CA 1818      9
+## 2    OR 1899     16
+## 3    CA 1904    178
+## 4    OR 1905     32
+## 5    CA 1905     18
+## 6    CA 1907     32
 </pre></div>
 </div></div>
 

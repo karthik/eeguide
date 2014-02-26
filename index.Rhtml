@@ -234,17 +234,15 @@ end.rcode-->
 <br><br>
 <!--begin.rcode summaries, eval=FALSE, message = FALSE, fig.align = 'center', cache = TRUE
 library(dplyr)
-rodents_summary <- rodents[!is.na(rodents$year), ] %.%
-
- regroup(list(quote(abbreviation), quote(year))) %.%
-
-  summarise(n = n())
-names(rodents_summary) <- c("State", "Year", "Counts")
+rodents_summary <- rodents %.% 
+filter(!is.na(year)) %.% 
+group_by(state = abbreviation, year) %.% 
+summarise(counts=n())
 head(rodents_summary)
 end.rcode-->
-<!--begin.rcode show_some_results, eval=TRUE, echo = FALSE, message = FALSE, fig.align = 'center', cache = TRUE
+<!--begin.rcode show_some_results, eval=TRUE, echo = FALSE, message = FALSE, fig.align = 'center'
 rodents_summary <- read.csv("rodents_summary.csv")
-head(arrange(rodents_summary, Year))
+head(arrange(rodents_summary, Year))[, -1]
 end.rcode-->
 </section>
 
