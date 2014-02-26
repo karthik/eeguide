@@ -34,7 +34,7 @@ __To knit this presentation__
 library(knitr)
 knit('index.Rhtml')
 # or from the command line
-Rscript -e "library(knitr); knit('index.Rhtml')"
+make slides
 ```
 
 Questions or comments to karthik dot ram at gmail dot com
